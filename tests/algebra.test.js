@@ -42,7 +42,7 @@ test("detects a non-idempotent merge", () => {
 test("detects a non-commutative merge", () => {
   const report = verifyJoinSemilattice({
     elements: [0, 1, 2],
-    join: (a, b) => Math.min(2, a + 2 * b),
+    join: (a, b) => a,
   });
   assert.equal(report.status, "invalid");
   assert.equal(report.law, "idempotence");
@@ -50,9 +50,9 @@ test("detects a non-commutative merge", () => {
 
 test("detects a non-associative operation after other laws pass", () => {
   const table = [
-    [0, 1, 2],
-    [1, 1, 2],
-    [2, 2, 1],
+    [0, 2, 1],
+    [2, 1, 0],
+    [1, 0, 2],
   ];
   const report = verifyJoinSemilattice({
     elements: [0, 1, 2],
