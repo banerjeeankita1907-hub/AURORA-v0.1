@@ -76,3 +76,35 @@ number of checks, outcomes and negative-control evidence.
 - Operation-based CRDTs and causal delivery conditions are outside this
   project's current model.
 - The experiment reports operation counts, not elapsed-time speedups.
+
+
+## Exhaustive small-algebra search
+
+A second experiment enumerates every commutative, idempotent binary operation
+on a labelled carrier of size n. Idempotence fixes each diagonal table entry
+to its row index. Commutativity means a single choice is made for every
+unordered off-diagonal pair. There are exactly
+
+    n ^ (n * (n - 1) / 2)
+
+such tables. The experiment enumerates all candidates for n = 2, 3 and 4,
+then invokes the same verifier used by the CRDT examples. Since closure,
+idempotence and commutativity are guaranteed by construction, every rejected
+table must fail associativity. The enumerator asserts that its operation count
+matches the closed-form count and that the outcome categories partition the
+complete search space.
+
+This is an exhaustive finite classification of these labelled binary tables
+at the selected sizes. It is not a classification of all semilattices up to
+isomorphism and is not a new algebraic theorem. Its purpose is to make the
+logical independence of the axioms executable and to provide minimal
+counterexamples to implementations that check only idempotence and
+commutativity.
+
+Run the experiment with:
+
+    npm run synthesize
+
+The output records the number of candidate operations, the number accepted as
+join-semilattices, the number rejected for associativity, and a concrete
+associativity witness from the first rejected table.
