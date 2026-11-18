@@ -26,3 +26,5 @@ jobs:
       - run: npm test
       - name: Run exhaustive finite experiments
         run: npm run experiments
+      - name: Exhaustively enumerate small merge algebras
+        run: npm run synthesize
