@@ -1,0 +1,14 @@
+{
+  "name": "aurora-crdt-verification-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Exhaustive finite verifier for state-based CRDT algebraic laws",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/algebra.js && node --check src/crdts.js && node --check src/experiment.js",
+    "experiments": "node src/experiment.js"
+  },
+  "license": "MIT"
+}
