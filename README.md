@@ -59,9 +59,10 @@ eventual dissemination.
 
 ## Experimental record
 
-See docs/experimental-design.md and the reproducible JSON emitted by
-npm run experiments and npm run synthesize. Experiments report exact carrier
-and operation counts; they deliberately make no wall-clock speedup claim.
+See docs/experimental-design.md and the recorded enumeration results in
+docs/finite-algebra-results.md. The reproducible JSON emitted by npm run
+experiments and npm run synthesize reports exact carrier and operation counts;
+the experiments deliberately make no wall-clock speedup claim.
 
 ## Repository layout
 
