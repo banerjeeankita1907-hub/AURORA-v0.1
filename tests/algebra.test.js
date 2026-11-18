@@ -45,7 +45,7 @@ test("detects a non-commutative merge", () => {
     join: (a, b) => a,
   });
   assert.equal(report.status, "invalid");
-  assert.equal(report.law, "idempotence");
+  assert.equal(report.law, "commutativity");
 });
 
 test("detects a non-associative operation after other laws pass", () => {
@@ -59,7 +59,7 @@ test("detects a non-associative operation after other laws pass", () => {
     join: (a, b) => table[a][b],
   });
   assert.equal(report.status, "invalid");
-  assert.equal(report.law, "commutativity");
+  assert.equal(report.law, "associativity");
 });
 
 test("detects an update that is not inflationary", () => {
