@@ -8,7 +8,8 @@ conflict-free replicated data types (CRDTs).**
 AURORA checks whether a finite merge operation forms a join-semilattice and
 whether supplied state updates are inflationary and monotone. It returns a
 specific counterexample when a law fails. It includes G-Set and bounded
-G-Counter instances, plus a deliberately invalid merge as a negative control.
+G-Counter instances, plus an exhaustive search over all commutative,
+idempotent merge tables on carriers up to four elements.
 
 > This is a research-oriented verification prototype, not a Turing-Award-level
 > result and not a new CRDT convergence theorem. It operationalizes established
@@ -23,6 +24,7 @@ Requires Node.js 20 or newer. There are no runtime dependencies.
     npm test
     npm run check
     npm run experiments
+    npm run synthesize
 
 ## What is checked
 
@@ -58,14 +60,15 @@ eventual dissemination.
 ## Experimental record
 
 See docs/experimental-design.md and the reproducible JSON emitted by
-npm run experiments. Experiments report exact carrier and operation counts;
-they deliberately make no wall-clock speedup claim.
+npm run experiments and npm run synthesize. Experiments report exact carrier
+and operation counts; they deliberately make no wall-clock speedup claim.
 
 ## Repository layout
 
     src/algebra.js       Finite semilattice and update-law verifier
     src/crdts.js         G-Set and bounded G-Counter models
-    src/experiment.js    Deterministic experiment runner
+    src/experiment.js    Deterministic CRDT family experiments
+    src/synthesis.js     Exhaustive small-algebra enumeration
     tests/               Positive cases and law-specific negative controls
     docs/                Algebraic argument, experimental design and limits
 
