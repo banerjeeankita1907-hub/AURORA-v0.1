@@ -4,11 +4,14 @@
   "private": true,
   "type": "module",
   "description": "Exhaustive finite verifier for state-based CRDT algebraic laws",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "node --test",
-    "check": "node --check src/algebra.js && node --check src/crdts.js && node --check src/experiment.js",
-    "experiments": "node src/experiment.js"
+    "check": "node --check src/algebra.js && node --check src/crdts.js && node --check src/experiment.js && node --check src/synthesis.js",
+    "experiments": "node src/experiment.js",
+    "synthesize": "node src/synthesis.js"
   },
   "license": "MIT"
 }
